@@ -19,7 +19,7 @@ of those actions
 
 ## Details of the last response is returned when doing a GET to /forbidden/last endpoint
 
+* Post to the "forbidden" endpoint
 * Get to the "forbidden/last" endpoint
-* Get to the new endpoint
 * Assert the response contains the correct details
 // Implement a step that checks the response contains the correct details
