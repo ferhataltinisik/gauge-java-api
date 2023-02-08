@@ -89,5 +89,5 @@ If you're facing any issues with the above, please just archive (zip) the projec
 ### Test report
 You can find the test report in reports/html-report
 
-![ezcv logo](TestReuslts/report.png)
+![ezcv logo](TestReuslts/test-eport.png)
 
