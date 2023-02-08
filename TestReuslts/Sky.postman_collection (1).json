@@ -1,0 +1,1194 @@
+{
+	"info": {
+		"_postman_id": "f6ed35ba-4277-42d1-9195-61fc02785c6d",
+		"name": "Sky",
+		"description": "transfer APIs\n\nContact Support:\n Name: info@silicon\n Email: info@silicon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5641657"
+	},
+	"item": [
+		{
+			"name": "madeup",
+			"item": [
+				{
+					"name": "madeup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 404\", ()=> {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/madeup",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"madeup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "internal_server_error",
+			"item": [
+				{
+					"name": "internal_server_error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 500\", ()=> {",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"internal_server_error\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Internal Server Error\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/internal_server_error",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"internal_server_error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internal_server_error",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 500\", ()=> {",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].timestamp).not.eql(null);",
+									"        pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"internal_server_error\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Internal Server Error\");",
+									"    pm.expect(jsonData.errors[0].path).eql(\"/v1/api/gateway_timeout\");",
+									"    pm.expect(jsonData.errors[0].receivedRequest).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"{{customerId}}\",\n    \"customerName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"occupation\": \"{{occupation}}\",\n    \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/internal_server_error",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"internal_server_error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internal_server_error/last",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"gateway_timeout\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/internal_server_error/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"internal_server_error",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "unauthorized",
+			"item": [
+				{
+					"name": "unauthorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 401\", ()=> {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"unauthorized\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Unauthorized\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ffdfdasdfadsfas",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/unauthorized",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"unauthorized"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unauthorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 401\", ()=> {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].timestamp).not.eql(null);",
+									"        pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"Unauthorized\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Invalid token\");",
+									"    pm.expect(jsonData.errors[0].path).eql(\"/v1/api/unauthorized\");",
+									"    pm.expect(jsonData.errors[0].receivedRequest).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer fadfadf3423423",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"errors\": [\n        {\n            \"timestamp\": \"2023-02-05T22:24:55Z\",\n            \"type\": \"FAILURE\",\n            \"code\": \"gateway_timeout\",\n            \"message\": \"Gateway Timeout\",\n            \"path\": \"/v1/api/gateway_timeout\"\n        },\n        {\n            \"receivedRequest\": [\n                {\n                    \"customerId\": \"69985cb3-cc44-4e9c-a74f-4b2f1891f6be\",\n                    \"customerName\": \"Hertha\",\n                    \"lastName\": \"Wehner\",\n                    \"occupation\": \"Dynamic Interactions Facilitator\",\n                    \"phoneNumber\": \"1185261665\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/unauthorized",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"unauthorized"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unauthorized/last",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"unauthorized\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/unauthorized/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"unauthorized",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "no_response",
+			"item": [
+				{
+					"name": "no_response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 204\", ()=> {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/no_response",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"no_response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no_response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 204\", ()=> {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).is.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"{{customerId}}\",\n    \"customerName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"occupation\": \"{{occupation}}\",\n    \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/no_response",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"no_response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no_response/las",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"no_response\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/no_response/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"no_response",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bad_request",
+			"item": [
+				{
+					"name": "bad_request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 400\", ()=> {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Respose data should include \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"empty_value\");",
+									"});",
+									"",
+									"pm.test(\"As a user i try to get customer details by empty customer id \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"empty_value\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Sorry customerId can not be empty\");",
+									"    ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/bad_request",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"bad_request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bad_request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 400\", ()=> {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Customer id can not be empty \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].timestamp).not.eql(null);",
+									"        pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"bad_request\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Sorry customerId can not be empty\");",
+									"    pm.expect(jsonData.errors[0].arguments[0]).eql(\"customerId\");",
+									"    pm.expect(jsonData.errors[0].path).eql(\"/v1/api/bad_request\");",
+									"    pm.expect(jsonData.errors[0].receivedRequest).not.eql(null);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"{{customerId}}\",\n    \"customerName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"occupation\": \"{{occupation}}\",\n    \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/bad_request",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"bad_request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bad_request/last",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"bad_request\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/bad_request/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"bad_request",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "forbidden",
+			"item": [
+				{
+					"name": "forbidden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 403\", ()=> {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"forbidden\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Forbidden\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/forbidden",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"forbidden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forbidden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 403\", ()=> {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].timestamp).not.eql(null);",
+									"        pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"forbidden\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Forbidden\");",
+									"    pm.expect(jsonData.errors[0].path).eql(\"/v1/api/forbidden\");",
+									"    pm.expect(jsonData.errors[0].receivedRequest).not.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"{{customerId}}\",\n    \"customerName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"occupation\": \"{{occupation}}\",\n    \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/forbidden",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"forbidden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forbidden/last",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"forbidden\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/forbidden/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"forbidden",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gateway_timeout",
+			"item": [
+				{
+					"name": "gateway_timeout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 504\", ()=> {",
+									"    pm.response.to.have.status(504);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"gateway_timeout\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Gateway Timeout\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/gateway_timeout",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"gateway_timeout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gateway_timeout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 504\", ()=> {",
+									"    pm.response.to.have.status(504);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors[0].timestamp).not.eql(null);",
+									"        pm.expect(jsonData.errors[0].type).eql(\"FAILURE\");",
+									"    pm.expect(jsonData.errors[0].code).eql(\"gateway_timeout\");",
+									"    pm.expect(jsonData.errors[0].message).eql(\"Fateway timeout\");",
+									"    pm.expect(jsonData.errors[0].path).eql(\"/v1/api/gateway_timeout\");",
+									"    pm.expect(jsonData.errors[0].receivedRequest).not.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"{{customerId}}\",\n    \"customerName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"occupation\": \"{{occupation}}\",\n    \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/gateway_timeout",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"gateway_timeout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gateway_timeout/last",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status should be 200\", ()=> {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Headers expected has\", ()=> {",
+									"    pm.response.to.have.header(\"content-type\");",
+									"    pm.response.to.have.header(\"X-Request-Id\");",
+									"});",
+									"",
+									"pm.test(\"Responds in 3000ms\", ()=> {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});",
+									"",
+									"pm.test(\"Respose data should include \", ()=> {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].lastUpdated).not.eql(null);",
+									"    pm.expect(jsonData.data[1].quearyType).eql(\"gateway_timeout\");",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerId).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.customerName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.lastName).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.occupation).not.eql(null);",
+									"    pm.expect(jsonData.data[1].bodyReceived.phoneNumber).not.eql(null);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{referenceTryOutApiBaseUrl}}/gateway_timeout/last",
+							"host": [
+								"{{referenceTryOutApiBaseUrl}}"
+							],
+							"path": [
+								"gateway_timeout",
+								"last"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "<Bearer Token>",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var uuid = require('uuid'); ",
+					"var guid = uuid.v4();",
+					"pm.environment.set(\"customerId\", guid)",
+					"",
+					"",
+					"function getRandomInt() {",
+					"  return ( Math.floor(1000000000 + Math.random() * 1000000000));",
+					"}",
+					"pm.environment.set(\"phoneNumber\", getRandomInt())",
+					"",
+					"",
+					"",
+					"pm.environment.set(\"firstName\", pm.variables.replaceIn('{{$randomFirstName}}'))",
+					"pm.environment.set(\"lastName\", pm.variables.replaceIn('{{$randomLastName}}'))",
+					"",
+					"pm.environment.set(\"motherName\", pm.variables.replaceIn('{{$randomFirstName}}'))",
+					"pm.environment.set(\"fatherName\", pm.variables.replaceIn('{{$randomFirstName}}'))",
+					"",
+					"pm.environment.set(\"occupation\", pm.variables.replaceIn('{{$randomJobTitle}}'))",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://transfer.dev.nonprod.d360apps.com",
+			"type": "string"
+		}
+	]
+}
