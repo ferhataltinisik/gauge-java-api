@@ -29,7 +29,10 @@ Further instructions can be found here <https://help.github.com/en/articles/crea
 
 If you're facing any issues with the above, please just archive (zip) the project directory and reply back to the recruitment team with it attached.
 
-## General Problems in the API Document
+##  Test Results
+Please find test issues about API document and Postman collections under TestReuslts file. Also you can find below some general problems about Api Standarts
+
+### General Problems in the API Document
 
 1. There is not a standard response object for POST methods. Post responses are changed from endpoints to endpoints. In some responses, the error object is not returned. In some responses, error objects start with the route names. Error response should return a standard error object for all POST methods, such as the following:
 
