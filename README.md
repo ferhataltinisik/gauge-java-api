@@ -13,7 +13,7 @@ The more interesting thing is seeing how you approach this, what your thought pr
 
 ## Setup
 
-### Pre-requisites
+### :heavy_check_mark: Running the Tests Pre-requisites
 
 Please make sure you have the following dependencies setup:
 
